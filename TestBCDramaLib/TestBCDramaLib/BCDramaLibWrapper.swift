@@ -22,7 +22,15 @@ public class BCDramaLibWrapper: NSObject {
     }
 
     @objc public func showSDK(from vc: UIViewController, pageType: BCTabPageTypeWrapper) {
-        let sdkPageType = BCTabPageType(rawValue: pageType.rawValue) ?? .collection
+        let sdkPageType: BCTabPageType
+        switch pageType {
+        case .collection:
+            sdkPageType = .collection
+        case .album:
+            sdkPageType = .album
+        case .recommend:
+            sdkPageType = .recommend
+        }
         BCVideoManager.showSDK(from: vc, pageType: sdkPageType)
     }
 
@@ -47,6 +55,7 @@ public class BCDramaLibWrapper: NSObject {
     }
 }
 
+// Wrapper Enums
 @objc public enum BCTabPageTypeWrapper: Int {
     case collection = 0
     case album = 1
@@ -71,29 +80,29 @@ public class BCDramaLibWrapper: NSObject {
     case vietnamese = 4
 }
 
-// Block type definitions
-@objc public typealias BCVideoPlayOnStartBlock = @convention(block) (Int, Int) -> Void
-@objc public typealias BCVideoPlayOnProgressBlock = @convention(block) (Int, Int, Int, Int) -> Void
-@objc public typealias BCVideoPlayOnEndBlock = @convention(block) (Int, Int) -> Void
-@objc public typealias BCVideoPlayOnUnlockBlock = @convention(block) (Int, Int) -> Void
-@objc public typealias BCVideoPlayOnRewardBlock = @convention(block) (Int, Int) -> Void
-@objc public typealias BCSetPaymentCallBackBlock = @convention(block) (String) -> Void
-@objc public typealias BCPaySuccessBlock = @convention(block) () -> Void
-@objc public typealias BCPayResultVerifyBlock = @convention(block) () -> Void
-@objc public typealias BCPayCancleBlock = @convention(block) () -> Void
-@objc public typealias BCAdLoadedBlock = @convention(block) () -> Void
-@objc public typealias BCAdClickedBlock = @convention(block) () -> Void
-@objc public typealias BCAdDidRewardEffectiveBlock = @convention(block) () -> Void
-@objc public typealias BCAdClosedBlock = @convention(block) () -> Void
-@objc public typealias BCAdFailedBlock = @convention(block) (String) -> Void
-@objc public typealias BCAdFinishBlock = @convention(block) () -> Void
-@objc public typealias BCRenderStatusBlock = @convention(block) (Bool) -> Void
-@objc public typealias BCCustomAdvInitBlock = @convention(block) () -> Void
-@objc public typealias BCCustomAdvRewardBlock = @convention(block) () -> Void
-@objc public typealias BCCustomAdvNativeExpressBlock = @convention(block) () -> Void
-@objc public typealias BCCustomAdvBannerBlock = @convention(block) () -> Void
-@objc public typealias BCAdUnLockBlock = @convention(block) (Bool) -> Void
-@objc public typealias BCStartAdRewardBlock = @convention(block) () -> Void
+// Block type definitions - REMOVED @objc public
+public typealias BCVideoPlayOnStartBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCVideoPlayOnProgressBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCVideoPlayOnEndBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCVideoPlayOnUnlockBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCVideoPlayOnRewardBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCSetPaymentCallBackBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCPaySuccessBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCPayResultVerifyBlock = @convention(block) (NSDictionary) -> Void
+public typealias BCPayCancleBlock = @convention(block) () -> Void // Assuming this one is correct
+public typealias BCAdLoadedBlock = @convention(block) (NSDictionary?, NSDictionary?, NSDictionary?, NSDictionary?) -> Void
+public typealias BCAdClickedBlock = @convention(block) (NSDictionary?) -> Void
+public typealias BCAdDidRewardEffectiveBlock = @convention(block) (NSDictionary?, NSDictionary?) -> Void
+public typealias BCAdClosedBlock = @convention(block) (NSDictionary?) -> Void
+public typealias BCAdFailedBlock = @convention(block) (Int, NSError) -> Void
+public typealias BCAdFinishBlock = @convention(block) (NSDictionary?) -> Void
+public typealias BCRenderStatusBlock = @convention(block) (Bool) -> Void
+public typealias BCCustomAdvInitBlock = @convention(block) () -> Void
+public typealias BCCustomAdvRewardBlock = @convention(block) () -> Void
+public typealias BCCustomAdvNativeExpressBlock = @convention(block) () -> Void
+public typealias BCCustomAdvBannerBlock = @convention(block) () -> Void
+public typealias BCAdUnLockBlock = @convention(block) (Int, Int) -> Void
+public typealias BCStartAdRewardBlock = @convention(block) (NSDictionary?, NSDictionary?) -> Void
 
 extension BCDramaLibWrapper {
     @objc public func logout() {
@@ -101,44 +110,51 @@ extension BCDramaLibWrapper {
     }
 
     @objc public func setLanguage(_ type: BCLanguageTypeWrapper) {
-        if let langType = BCLanguageType(rawValue: type.rawValue) {
-            BCVideoManager.setLanguage(langType)
+        let langType: BCLanguageType
+        switch type {
+        case .system: langType = .system
+        case .chineseSimplified: langType = .chineseSimplified
+        case .chineseTraditional: langType = .chineseTraditional
+        case .english: langType = .english
+        case .vietnamese: langType = .vietnamese
         }
+        BCVideoManager.setLanguage(langType)
     }
 
     @objc public func setVideoPlayCallBack(onStart: BCVideoPlayOnStartBlock?, onProgress: BCVideoPlayOnProgressBlock?, onEnd: BCVideoPlayOnEndBlock?, onUnlock: BCVideoPlayOnUnlockBlock?, onReward: BCVideoPlayOnRewardBlock?) {
-        // Since I cannot know the exact signature of the original callbacks, I'm assuming them based on the context.
-        // The user might need to correct this if the assumptions are wrong.
         BCVideoManager.setVideoPlayCallBack(
-            onStart: { videoId, episode in onStart?(videoId, episode) },
-            onProgress: { videoId, episode, current, total in onProgress?(videoId, episode, current, total) },
-            onEnd: { videoId, episode in onEnd?(videoId, episode) },
-            onUnlock: { videoId, episode in onUnlock?(videoId, episode) },
-            onReward: { videoId, episode in onReward?(videoId, episode) }
+            onStart: { data in onStart?(data as NSDictionary) },
+            onProgress: { data in onProgress?(data as NSDictionary) },
+            onEnd: { data in onEnd?(data as NSDictionary) },
+            onUnlock: { data in onUnlock?(data as NSDictionary) },
+            onReward: { data in onReward?(data as NSDictionary) }
         )
     }
 
     @objc public func setEnvType(_ type: BCEnvTypeWrapper) {
-        if let envType = BCEnvType(rawValue: type.rawValue) {
-            BCVideoManager.setEnvType(envType)
+        let envType: BCEnvType
+        switch type {
+        case .debug: envType = .debug
+        case .release: envType = .release
         }
+        BCVideoManager.setEnvType(envType)
     }
 
     @objc public func setPaymentCallback(onPayment: BCSetPaymentCallBackBlock?) {
         BCVideoManager.setPaymentCallback { json in
-            onPayment?(json)
+            onPayment?(json as NSDictionary)
         }
     }
 
     @objc public func setPayment(onPaySuccess: BCPaySuccessBlock?) {
-        BCVideoManager.setPayment {
-            onPaySuccess?()
+        BCVideoManager.setPayment { data in
+            onPaySuccess?(data as NSDictionary)
         }
     }
 
     @objc public func paymentResultVerify(onPayVerify: BCPayResultVerifyBlock?) {
-        BCVideoManager.paymentResultVerify {
-            onPayVerify?()
+        BCVideoManager.paymentResultVerify { data in
+            onPayVerify?(data as NSDictionary)
         }
     }
 
@@ -154,11 +170,11 @@ extension BCDramaLibWrapper {
 
     @objc public func loadVideoAdCallback(onLoaded: BCAdLoadedBlock?, onClicked: BCAdClickedBlock?, onEffective: BCAdDidRewardEffectiveBlock?, onClosed: BCAdClosedBlock?, onFailed: BCAdFailedBlock?) {
         BCVideoManager.loadVideoAdCallback(
-            onLoaded: { onLoaded?() },
-            onClicked: { onClicked?() },
-            onEffective: { onEffective?() },
-            onClosed: { onClosed?() },
-            onFailed: { error in onFailed?(error.localizedDescription) }
+            onLoaded: { arg1, arg2, arg3, arg4 in onLoaded?(arg1 as? NSDictionary, arg2 as? NSDictionary, arg3 as? NSDictionary, arg4 as? NSDictionary) },
+            onClicked: { arg1 in onClicked?(arg1 as? NSDictionary) },
+            onEffective: { arg1, arg2 in onEffective?(arg1 as? NSDictionary, arg2 as? NSDictionary) },
+            onClosed: { arg1 in onClosed?(arg1 as? NSDictionary) },
+            onFailed: { adType, error in onFailed?(adType.rawValue, error as NSError) }
         )
     }
 
@@ -167,26 +183,29 @@ extension BCDramaLibWrapper {
     }
 
     @objc public func onUnLock(onUnLock: BCAdUnLockBlock?) {
-        BCVideoManager.onUnLock { success in
-            onUnLock?(success)
+        BCVideoManager.onUnLock { unlockType, val in
+            onUnLock?(unlockType.rawValue, val)
         }
     }
 
     @objc public func onAdDidFinish(onFinish: BCAdFinishBlock?) {
-        BCVideoManager.onAdDidFinish {
-            onFinish?()
+        BCVideoManager.onAdDidFinish { data in
+            onFinish?(data as? NSDictionary)
         }
     }
 
     @objc public func startRewardVideo(vc: UIViewController, videoId: Int, eposodeNo: Int, placementId: String, extra: String, onStartReward: BCStartAdRewardBlock?) {
-        BCVideoManager.startRewardVideo(vc: vc, videoId: videoId, eposodeNo: eposodeNo, placementId: placementId, extra: extra) {
-            onStartReward?()
+        BCVideoManager.startRewardVideo(vc: vc, videoId: videoId, eposodeNo: eposodeNo, placementId: placementId, extra: extra) { arg1, arg2 in
+            onStartReward?(arg1 as? NSDictionary, arg2 as? NSDictionary)
         }
     }
 
     @objc public func setAdvStrategy(type: BCStrategyTypeWrapper) {
-        if let strategyType = BCStrategyType(rawValue: type.rawValue) {
-            BCVideoManager.setAdvStrategy(type: strategyType)
+        let strategyType: BCStrategyType
+        switch type {
+        case .bidding: strategyType = .bidding
+        case .round: strategyType = .round
         }
+        BCVideoManager.setAdvStrategy(type: strategyType)
     }
 }

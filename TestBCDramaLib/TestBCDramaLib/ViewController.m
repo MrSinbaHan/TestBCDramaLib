@@ -91,6 +91,7 @@
 }
 
 - (void)initSDK {
+    // Please replace with your actual credentials
     [self.dramaWrapper initSDKWithAppId:@"your_app_id"
                             packageName:@"your_package_name"
                                  secret:@"your_secret"
@@ -115,32 +116,34 @@
 }
 
 - (void)jumpToVideoPlay {
+    // Example: Jump to video with ID 1, episode 1
     [self.dramaWrapper jumpToVideoPlayControllerFrom:self videoId:1 lastEpisodeNo:1];
 }
 
 - (void)jumpToMoreDetail {
-    [self.dramaWrapper jumpToVideoMoreDetailListFrom:self menuId:1 menuName:@"Menu Name"];
+    // Example: Jump to menu with ID 1
+    [self.dramaWrapper jumpToVideoMoreDetailListFrom:self menuId:1 menuName:@"Example Menu"];
 }
 
 - (void)setCallbacks {
-    [self.dramaWrapper setVideoPlayCallBackOnStart:^(NSInteger videoId, NSInteger episode) {
-        NSLog(@"Video play started for videoId: %ld, episode: %ld", (long)videoId, (long)episode);
-    } onProgress:^(NSInteger videoId, NSInteger episode, NSInteger current, NSInteger total) {
-        NSLog(@"Video progress: %ld/%ld", (long)current, (long)total);
-    } onEnd:^(NSInteger videoId, NSInteger episode) {
-        NSLog(@"Video ended for videoId: %ld, episode: %ld", (long)videoId, (long)episode);
-    } onUnlock:^(NSInteger videoId, NSInteger episode) {
-        NSLog(@"Video unlocked for videoId: %ld, episode: %ld", (long)videoId, (long)episode);
-    } onReward:^(NSInteger videoId, NSInteger episode) {
-        NSLog(@"Video reward for videoId: %ld, episode: %ld", (long)videoId, (long)episode);
+    [self.dramaWrapper setVideoPlayCallBackOnStart:^(NSDictionary * _Nonnull data) {
+        NSLog(@"Video play started: %@", data);
+    } onProgress:^(NSDictionary * _Nonnull data) {
+        NSLog(@"Video progress: %@", data);
+    } onEnd:^(NSDictionary * _Nonnull data) {
+        NSLog(@"Video ended: %@", data);
+    } onUnlock:^(NSDictionary * _Nonnull data) {
+        NSLog(@"Video unlocked: %@", data);
+    } onReward:^(NSDictionary * _Nonnull data) {
+        NSLog(@"Video reward: %@", data);
     }];
 
-    [self.dramaWrapper setPaymentCallbackOnPayment:^(NSString * _Nonnull json) {
-        NSLog(@"Payment callback with json: %@", json);
+    [self.dramaWrapper setPaymentCallbackOnPayment:^(NSDictionary * _Nonnull data) {
+        NSLog(@"Payment callback with data: %@", data);
     }];
 
-    [self.dramaWrapper setPaymentOnPaySuccess:^{
-        NSLog(@"Payment success");
+    [self.dramaWrapper setPaymentOnPaySuccess:^(NSDictionary * _Nonnull data) {
+        NSLog(@"Payment success with data: %@", data);
     }];
 
     NSLog(@"Callbacks set");
