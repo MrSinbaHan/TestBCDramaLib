@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  
+
+  Created by mac on 2025/7/15.
+  
+*/
+
+
+"watching" = "Đang theo dõi";
+"drama_list" = "Danh sách phim";
+"recommend" = "Đề xuất";
+"more" = "Thêm";
+"all_episodes" = "Toàn bộ %@ tập";
+"episode_no" = "Tập thứ %@";
+"watch_full_episode" = "Xem toàn bộ tập";
+"series_ended" = "Đã hoàn thành";
+"speed" = "Tốc độ";
+"play_speed" = "Phát nhanh";
+"selections" = "Chọn tập";
+"close" = "...Thu gọn";
+"expand" = "...Mở rộng";
+"switched_to_speed" = "Đã chuyển sang phát với tốc độ %@";
+"free_unlock_by_ad" = "Xem quảng cáo để mở khóa";
+"unlock_after_payment" = "Mở khóa không quảng cáo";
+"support_the_author" = "Sáng tác của tác giả, tiếp tục đọc sau khi mở khóa";
+"accept_the_agreement" = "Đại lý nạp tiền chấp nhận \"Thỏa thuận quy tắc nạp tiền\" và Hàng ảo sau khi mua không thể hoàn trả, trẻ vị thành niên vui lòng";
+"rules_agreement" = "\"Thỏa thuận quy tắc nạp tiền\"";
+"member_agreement" = "\"Thỏa thuận dịch vụ thành viên\"";
+"alipay_payment" = "Thanh toán Alipay";
+"wechat_payment" = "Thanh toán WeChat Pay";
+"select_payment_way" = "Vui lòng chọn phương thức thanh toán";
+"confirm_payment" = "Xác nhận thanh toán";
+"unlock_congratulations" = "Chúc mừng bạn\n Nhận tập phim đã mở khóa miễn phí";
+"unlock_episodes" = "Miễn phí Unlocked Episodes";
+"unlock_watching_ads" = "Xem quảng cáo để mở khóa miễn phí %@ tập";
+"unlock_auto_watching_ads" = "Tự động xem quảng cáo miễn phí sau %@ giây để mở khóa %@ tập";
+"placementId_can_not_nil" = "Quảng cáo không được để trống";
+"ad_valid" = "Quảng cáo không hoạt động, vui lòng kéo lại";
+"watch_ad_unlock" = "Xem quảng cáo Unlocked";
+"ad_unlock_failure" = "Mở khóa quảng cáo thất bại";
+"iap_config_error" = "Quảng cáo video có cấu hình bất thường, ưu tiên trả tiền, nhưng video này không hỗ trợ trả tiền";
+"iaa_config_error" = "Cấu hình quảng cáo video bất thường, ưu tiên quảng cáo khuyến khích, nhưng video này không hỗ trợ quảng cáo khuyến khích";
+"up_contuine_watch" = "Vuốt lên và tiếp tục xem";
+"unInstall_alipay" = "Không phát hiện khách hàng Alipay, vui lòng thử lại sau khi cài đặt";
+"unInstall_wechat" = "WeChat client không được phát hiện, vui lòng thử lại sau khi cài đặt";
+"comfin_pay_complete" = "Xác nhận thanh toán đã hoàn tất";
+"verifing_pay" = "Kiểm tra thanh toán. ..";
+"order_unpay" = "Đơn hàng chưa thanh toán";
+"order_payed" = "Lệnh đã thanh toán";
+"order_pay_failure" = "Thanh toán đơn hàng thất bại";
+"refunded" = "Hoàn tiền";
+"alert_tips"="Gợi ý ấm áp";
+"alert_confirm_deleted"="Xác nhận bạn muốn xóa?";
+"alert_cancle"="Hủy bỏ";
+"alert_confirm"="Xác định";
+"play_record_failure"="Phát lại bản ghi báo cáo thất bại: %@";
+"unit_yuan"="%@Nguyên";
+"watching_ad_to_ulock"="Xem video miễn phí Unlocked Episodes";
+"continue_watching"="Xem tiếp";
+"quite"="Nhấn Exit";
+"cancle_collection_title" = "Bạn có chắc chắn muốn hủy mục yêu thích không?";
+"cancle_collection_msg" = "Có thể bạn sẽ không tìm thấy kịch bản sau khi hủy?";
+"cancle_collection_tips" = "Hủy yêu thích";
+"collection_success_tips" = "Phim đã được thêm vào danh sách phim truyền hình. Bạn có thể xem tất cả các phim truyền hình bạn đang theo dõi tại [Trang chủ - Đang theo dõi]";

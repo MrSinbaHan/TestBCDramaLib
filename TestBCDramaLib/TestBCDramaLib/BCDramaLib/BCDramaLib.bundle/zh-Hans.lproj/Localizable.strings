@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by mac on 2025/7/5.
+  
+*/
+
+"watching" = "在追";
+"drama_list" = "剧单";
+"recommend" = "推荐";
+"more" = "更多";
+"all_episodes" = "全%@集";
+"episode_no" = "第%@集";
+"watch_full_episode" = "看全集";
+"series_ended" = "已完结";
+"speed" = "倍速";
+"play_speed" = "倍速播放";
+"selections" = "选集";
+"close" = "...收起";
+"expand" = "...展开";
+"switched_to_speed" = "已切换至%@X倍速播放";
+"free_unlock_by_ad" = "免广告解锁";
+"unlock_after_payment" = "试看%@秒后付费解锁";
+"support_the_author" = "支持作者创作，解锁后继续阅读";
+"accept_the_agreement" = "充值代表接受《充值规则协议》和《会员服务协议》虚拟商品购买后不可退换，青少年请在家长陪同下充值";
+"rules_agreement" = "《充值规则协议》";
+"member_agreement" = "《会员服务协议》";
+"alipay_payment" = "支付宝支付";
+"wechat_payment" = "微信支付";
+"select_payment_way" = "请选择支付方式";
+"confirm_payment" = "确认支付";
+"unlock_congratulations" = "恭喜您\n获得免费解锁剧集";
+"unlock_episodes" = "免费解锁剧集";
+"unlock_watching_ads" = "看广告免费解锁%@集";
+"unlock_auto_watching_ads" = "%@s后自动看广告免费解锁%@集";
+"watch_now" = "立即观看";
+"follow" = "追";
+"followed" = "已追";
+"placementId_can_not_nil" = "广告位不能为空";
+"ad_valid" = "广告失效，请重新拉取";
+"watch_ad_unlock" = "看广告解锁";
+"ad_unlock_failure" = "广告解锁失败";
+"iap_config_error" = "视频广告配置异常，优先付费，但该视频不支持付费";
+"iaa_config_error" = "视频广告配置异常，优先激励广告，但该视频不支持激励广告";
+"up_contuine_watch" = "向上滑动，继续观看";
+"unInstall_alipay" = "未检测到支付宝客户端，请安装后重试";
+"unInstall_wechat" = "未检测到微信客户端，请安装后重试";
+"comfin_pay_complete" = "确认是否支付完成";
+"verifing_pay" = "付款验证中...";
+"order_unpay" = "订单未支付";
+"order_payed" = "订单已支付";
+"order_pay_failure" = "订单支付失败";
+"refunded" = "已退款";
+"alert_tips" = "温馨提示";
+"alert_confirm_deleted" = "确认要删除吗？";
+"alert_cancle" = "取消";
+"alert_confirm" = "确定";
+"play_record_failure" = "播放记录上报失败: %@";
+"unit_yuan" = "%@元";
+"watching_ad_to_ulock" = "观看视频免费解锁剧集";
+"continue_watching" = "继续观看";
+"quite" = "坚持退出";
+"cancle_collection_title" = "确定要取消收藏吗？";
+"cancle_collection_msg" = "取消后可能找不到剧本哦？";
+"cancle_collection_tips" = "取消收藏";
+"collection_success_tips" = "已添加至追剧，可在【首页-在追】查看所有在追剧";
