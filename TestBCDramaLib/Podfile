@@ -1,0 +1,17 @@
+platform :ios, '12.0'
+
+target 'TestBCDramaLib' do
+  use_frameworks!
+
+  pod 'Alamofire'
+  pod 'CryptoSwift'
+  pod 'GDTMobSDK'
+  pod 'MJRefresh'
+  pod 'SDWebImage'
+  pod 'SVProgressHUD'
+  pod 'SnapKit'
+  pod 'SuperPlayer_iOS'
+  pod 'SwiftyJSON'
+  pod 'TXLiteAVSDK_Player'
+  pod 'YYText'
+end
