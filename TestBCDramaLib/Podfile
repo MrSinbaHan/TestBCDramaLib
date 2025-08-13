@@ -1,7 +1,7 @@
 platform :ios, '12.0'
 
 target 'TestBCDramaLib' do
-  use_frameworks!
+  use_modular_headers!
 
   pod 'Alamofire'
   pod 'CryptoSwift'
